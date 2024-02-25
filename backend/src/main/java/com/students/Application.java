@@ -1,5 +1,7 @@
 package com.students;
 
+import com.students.domain.AppUser;
+import com.students.domain.AppUserRepository;
 import com.students.domain.Student;
 import com.students.domain.StudentRepository;
 import org.slf4j.Logger;
@@ -15,9 +17,12 @@ public class Application implements CommandLineRunner {
     );
 
     private final StudentRepository repository;
+    private final AppUserRepository urepository;
 
-    public Application(StudentRepository repository) {
+    public Application(StudentRepository repository, AppUserRepository urepository) {
+
         this.repository = repository;
+        this.urepository = urepository;
     }
 
     public static void main(String[] args) {
@@ -35,5 +40,11 @@ public class Application implements CommandLineRunner {
         for (Student student: repository.findAll()) {
             logger.info("First name: {}, Last name: {}, Field of study: {}", student.getFirstName(), student.getLastName(), student.getFieldOfStudy());
         }
+
+        // Username: user, password: pass1234!A
+        urepository.save(new AppUser("user", "$2a$10$5jQ9pO9WZ4lslt8kQqnX1OVonZmaztgRZDLDOlSs61k3QQHiZwJ9y", "USER"));
+
+        // Username: admin, password: pass1234!A
+        urepository.save(new AppUser("admin", "$2a$10$5jQ9pO9WZ4lslt8kQqnX1OVonZmaztgRZDLDOlSs61k3QQHiZwJ9y", "ADMIN"));
     }
 }

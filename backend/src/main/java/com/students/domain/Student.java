@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     private String firstName, lastName, email, fieldOfStudy;
