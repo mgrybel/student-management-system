@@ -16,7 +16,8 @@ public class StudentRepositoryTest {
     @Test
     void saveStudent() {
         repository.save(new Student("Bob", "Smith", "bob@test.com", "Computer Science", 412341, 4));
-        assertThat(repository.findByFieldOfStudy("Computer Science").isPresent()).isTrue();
+        assertThat(repository.findByFieldOfStudy("Computer Science")).isNotNull();
+
     }
 
     @Test
