@@ -13,12 +13,14 @@ public class Student {
 
     private String firstName, lastName, email, fieldOfStudy;
 
-    private int studentNumber, gpa;
+    private int studentNumber;
+
+    private Double gpa;
 
     public Student() {
     }
 
-    public Student(String firstName, String lastName, String email, String fieldOfStudy, int studentNumber, int gpa) {
+    public Student(String firstName, String lastName, String email, String fieldOfStudy, int studentNumber, Double gpa) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,11 +78,11 @@ public class Student {
         this.studentNumber = studentNumber;
     }
 
-    public int getGpa() {
+    public Double getGpa() {
         return gpa;
     }
 
-    public void setGpa(int gpa) {
+    public void setGpa(Double gpa) {
         this.gpa = gpa;
     }
 }

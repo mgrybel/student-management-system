@@ -15,14 +15,14 @@ public class StudentRepositoryTest {
 
     @Test
     void saveStudent() {
-        repository.save(new Student("Bob", "Smith", "bob@test.com", "Computer Science", 412341, 4));
+        repository.save(new Student("Bob", "Smith", "bob@test.com", "Computer Science", 412341, 3.9));
         assertThat(repository.findByFieldOfStudy("Computer Science")).isNotNull();
 
     }
 
     @Test
     void deleteStudent() {
-        repository.save(new Student("John", "Doe", "john@test.com", "Physics", 323341, 4));
+        repository.save(new Student("John", "Doe", "john@test.com", "Physics", 323341, 3.7));
         repository.deleteAll();
         assertThat(repository.count()).isEqualTo(0);
     }

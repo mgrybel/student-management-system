@@ -32,9 +32,9 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        repository.save(new Student("John", "Doe", "john.doe@example.com", "Computer Science", 154732, 4));
-        repository.save(new Student("Ann", "Smith", "ann.smith@example.com", "Mathematics", 131231, 3));
-        repository.save(new Student("Bob", "Richardson", "bob.richardson@example.com", "Physics", 154219, 3 ));
+        repository.save(new Student("John", "Doe", "john.doe@example.com", "Computer Science", 154732, 3.9));
+        repository.save(new Student("Ann", "Smith", "ann.smith@example.com", "Mathematics", 131231, 3.7));
+        repository.save(new Student("Bob", "Richardson", "bob.richardson@example.com", "Physics", 154219, 4.0 ));
 
         // Fetch all students and log to console
         for (Student student: repository.findAll()) {
