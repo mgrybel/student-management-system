@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-import { StudentResponse } from '../types';
 import { getStudents } from '../api/StudentApi';
 
 const StudentList = () => {
@@ -9,26 +9,26 @@ const StudentList = () => {
     queryFn: getStudents,
   });
 
+  const columns: GridColDef[] = [
+    { field: 'firstName', headerName: 'First Name', width: 200 },
+    { field: 'lastName', headerName: 'Last Name', width: 200 },
+    { field: 'email', headerName: 'Email', width: 200 },
+    { field: 'fieldOfStudy', headerName: 'Field of Study', width: 200 },
+    { field: 'studentNumber', headerName: 'Student Number', width: 150 },
+    { field: 'gpa', headerName: 'GPA', width: 150 },
+  ];
+
   if (!isSuccess) {
     return <span>Loading...</span>;
   } else if (error) {
     return <span>Error when fetching students...</span>;
   } else {
     return (
-      <table>
-        <tbody>
-          {data.map((student: StudentResponse) => (
-            <tr key={student._links.self.href}>
-              <td>{student.firstName}</td>
-              <td>{student.lastName}</td>
-              <td>{student.email}</td>
-              <td>{student.fieldOfStudy}</td>
-              <td>{student.studentNumber}</td>
-              <td>{student.gpa}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <DataGrid
+        rows={data}
+        columns={columns}
+        getRowId={(row) => row._links.self.href}
+      />
     );
   }
 };
