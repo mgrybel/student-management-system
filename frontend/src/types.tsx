@@ -9,11 +9,17 @@ export type StudentResponse = {
     self: {
       href: string;
     };
-    profile: {
-      href: string;
-    };
-    search: {
+    student: {
       href: string;
     };
   };
+};
+
+export type Student = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  fieldOfStudy: string;
+  studentNumber: number;
+  gpa: number;
 };
