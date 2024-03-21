@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import { Student } from '../types';
 import { addStudent } from '../api/StudentApi';
+import StudentDialogContent from './StudentDialogContent';
 
 const AddStudent = () => {
   const [open, setOpen] = useState(false);
@@ -57,55 +58,19 @@ const AddStudent = () => {
 
   return (
     <>
-      <button onClick={handleClickOpen}>New Student</button>
+      <Button variant='outlined' onClick={handleClickOpen}>
+        New Student
+      </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>New student</DialogTitle>
-        <DialogContent>
-          <input
-            placeholder='First Name'
-            name='firstName'
-            value={student.firstName}
-            onChange={handleChange}
-          />
-          <br />
-          <input
-            placeholder='Last Name'
-            name='lastName'
-            value={student.lastName}
-            onChange={handleChange}
-          />
-          <br />
-          <input
-            placeholder='Email'
-            name='email'
-            value={student.email}
-            onChange={handleChange}
-          />
-          <br />
-          <input
-            placeholder='Field of Study'
-            name='fieldOfStudy'
-            value={student.fieldOfStudy}
-            onChange={handleChange}
-          />
-          <br />
-          <input
-            placeholder='Student Number'
-            name='studentNumber'
-            value={student.studentNumber}
-            onChange={handleChange}
-          />
-          <br />
-          <input
-            placeholder='GPA'
-            name='gpa'
-            value={student.gpa}
-            onChange={handleChange}
-          />
-        </DialogContent>
+        <StudentDialogContent student={student} handleChange={handleChange} />
         <DialogActions>
-          <button onClick={handleClose}>Cancel</button>
-          <button onClick={handleSave}>Save</button>
+          <Button variant='outlined' onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant='contained' onClick={handleSave}>
+            Save
+          </Button>
         </DialogActions>
       </Dialog>
     </>

@@ -6,6 +6,7 @@ import {
   GridCellParams,
   GridToolbar,
 } from '@mui/x-data-grid';
+import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 
 import { getStudents, deleteStudent } from '../api/StudentApi';
@@ -46,7 +47,8 @@ const StudentList = () => {
       filterable: false,
       disableColumnMenu: true,
       renderCell: (params: GridCellParams) => (
-        <button
+        <Button
+          variant='contained'
           onClick={() => {
             if (
               window.confirm(
@@ -58,7 +60,7 @@ const StudentList = () => {
           }}
         >
           Delete
-        </button>
+        </Button>
       ),
     },
   ];
