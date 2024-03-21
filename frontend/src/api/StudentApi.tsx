@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { StudentResponse } from '../types';
+import { StudentResponse, Student } from '../types';
 
 export const getStudents = async (): Promise<StudentResponse[]> => {
   const response = await axios.get('http://localhost:8080/api/students');
@@ -12,3 +12,12 @@ export const deleteStudent = async (link: string): Promise<StudentResponse> => {
   const response = await axios.delete(link);
   return response.data;
 };
+
+export const addStudent = async (student: Student): Promise<StudentResponse> => {
+  const response = await axios.post('http://localhost:8080/api/students', student, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  return response.data;
+}

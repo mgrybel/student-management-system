@@ -9,6 +9,7 @@ import {
 import Snackbar from '@mui/material/Snackbar';
 
 import { getStudents, deleteStudent } from '../api/StudentApi';
+import AddStudent from './AddStudent';
 
 const StudentList = () => {
   const [open, setOpen] = useState(false);
@@ -72,6 +73,7 @@ const StudentList = () => {
   } else if (isSuccess) {
     return (
       <>
+        <AddStudent />
         <DataGrid
           rows={data}
           columns={columns}
