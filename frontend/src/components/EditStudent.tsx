@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import Tooltip from '@mui/material/Tooltip';
+import EditIcon from '@mui/icons-material/Edit';
 
 import { Student, StudentEntry, StudentResponse } from '../types';
 import { updateStudent } from '../api/StudentApi';
@@ -74,9 +77,11 @@ const EditStudent = ({ studentdata }: FormProps) => {
 
   return (
     <>
-      <Button variant='contained' onClick={handleClickOpen}>
-        Edit
-      </Button>
+      <Tooltip title='Edit student'>
+        <IconButton aria-label='edit' size='small' onClick={handleClickOpen}>
+          <EditIcon fontSize='small' />
+        </IconButton>
+      </Tooltip>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Edit student</DialogTitle>
         <StudentDialogContent student={student} handleChange={handleChange} />

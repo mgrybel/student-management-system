@@ -6,8 +6,10 @@ import {
   GridCellParams,
   GridToolbar,
 } from '@mui/x-data-grid';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Snackbar from '@mui/material/Snackbar';
+import Tooltip from '@mui/material/Tooltip';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { getStudents, deleteStudent } from '../api/StudentApi';
 import AddStudent from './AddStudent';
@@ -59,20 +61,23 @@ const StudentList = () => {
       filterable: false,
       disableColumnMenu: true,
       renderCell: (params: GridCellParams) => (
-        <Button
-          variant='contained'
-          onClick={() => {
-            if (
-              window.confirm(
-                `Are you sure you want to delete ${params.row.firstName} ${params.row.lastName}?`
-              )
-            ) {
-              mutate(params.row._links.student.href);
-            }
-          }}
-        >
-          Delete
-        </Button>
+        <Tooltip title='Delete student'>
+          <IconButton
+            aria-label='delete'
+            size='small'
+            onClick={() => {
+              if (
+                window.confirm(
+                  `Are you sure you want to delete ${params.row.firstName} ${params.row.lastName}?`
+                )
+              ) {
+                mutate(params.row._links.student.href);
+              }
+            }}
+          >
+            <DeleteIcon fontSize='small' />
+          </IconButton>
+        </Tooltip>
       ),
     },
   ];
