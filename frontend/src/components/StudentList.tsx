@@ -11,6 +11,7 @@ import Snackbar from '@mui/material/Snackbar';
 
 import { getStudents, deleteStudent } from '../api/StudentApi';
 import AddStudent from './AddStudent';
+import EditStudent from './EditStudent';
 
 const StudentList = () => {
   const [open, setOpen] = useState(false);
@@ -33,12 +34,23 @@ const StudentList = () => {
   });
 
   const columns: GridColDef[] = [
-    { field: 'firstName', headerName: 'First Name', width: 230 },
-    { field: 'lastName', headerName: 'Last Name', width: 230 },
-    { field: 'email', headerName: 'Email', width: 230 },
-    { field: 'fieldOfStudy', headerName: 'Field of Study', width: 230 },
-    { field: 'studentNumber', headerName: 'Student Number', width: 230 },
-    { field: 'gpa', headerName: 'GPA', width: 230 },
+    { field: 'firstName', headerName: 'First Name', width: 200 },
+    { field: 'lastName', headerName: 'Last Name', width: 200 },
+    { field: 'email', headerName: 'Email', width: 200 },
+    { field: 'fieldOfStudy', headerName: 'Field of Study', width: 200 },
+    { field: 'studentNumber', headerName: 'Student Number', width: 150 },
+    { field: 'gpa', headerName: 'GPA', width: 150 },
+    {
+      field: 'edit',
+      headerName: '',
+      width: 90,
+      sortable: false,
+      filterable: false,
+      disableColumnMenu: true,
+      renderCell: (params: GridCellParams) => (
+        <EditStudent studentdata={params.row} />
+      ),
+    },
     {
       field: 'delete',
       headerName: '',

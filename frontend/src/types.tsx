@@ -23,3 +23,8 @@ export type Student = {
   studentNumber: number;
   gpa: number;
 };
+
+export type StudentEntry = {
+  student: Student;
+  url: string;
+};
