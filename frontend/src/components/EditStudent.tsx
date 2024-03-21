@@ -82,7 +82,7 @@ const EditStudent = ({ studentdata }: FormProps) => {
           <EditIcon fontSize='small' />
         </IconButton>
       </Tooltip>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth='sm'>
         <DialogTitle>Edit student</DialogTitle>
         <StudentDialogContent student={student} handleChange={handleChange} />
         <DialogActions>

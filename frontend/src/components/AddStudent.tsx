@@ -61,7 +61,7 @@ const AddStudent = () => {
       <Button variant='outlined' onClick={handleClickOpen}>
         New Student
       </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth='sm'>
         <DialogTitle>New student</DialogTitle>
         <StudentDialogContent student={student} handleChange={handleChange} />
         <DialogActions>
