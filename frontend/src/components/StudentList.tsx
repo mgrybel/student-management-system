@@ -6,8 +6,10 @@ import {
   GridCellParams,
   GridToolbar,
 } from '@mui/x-data-grid';
+import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Snackbar from '@mui/material/Snackbar';
+import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -15,7 +17,11 @@ import { getStudents, deleteStudent } from '../api/StudentApi';
 import AddStudent from './AddStudent';
 import EditStudent from './EditStudent';
 
-const StudentList = () => {
+type StudentListProps = {
+  logOut?: () => void;
+};
+
+const StudentList = ({ logOut }: StudentListProps) => {
   const [open, setOpen] = useState(false);
 
   const queryClient = useQueryClient();
@@ -92,7 +98,14 @@ const StudentList = () => {
   } else if (isSuccess) {
     return (
       <>
-        <AddStudent />
+        <Stack
+          direction='row'
+          alignItems='center'
+          justifyContent='space-between'
+        >
+          <AddStudent />
+          <Button onClick={logOut}>Log Out</Button>
+        </Stack>
         <DataGrid
           rows={data}
           columns={columns}

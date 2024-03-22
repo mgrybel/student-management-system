@@ -45,6 +45,9 @@ public class Application implements CommandLineRunner {
         urepository.save(new AppUser("user", "$2a$10$5jQ9pO9WZ4lslt8kQqnX1OVonZmaztgRZDLDOlSs61k3QQHiZwJ9y", "USER"));
 
         // Username: admin, password: pass1234!A
-        urepository.save(new AppUser("admin", "$2a$10$5jQ9pO9WZ4lslt8kQqnX1OVonZmaztgRZDLDOlSs61k3QQHiZwJ9y", "ADMIN"));
+
+        // Username: test, password: test
+        // Bcrypt Password Generator https://www.browserling.com/tools/bcrypt
+        urepository.save(new AppUser("test", "$2a$10$fYQtVvF6t4xrjLFFW5nfROtWfAlQAVV64aizE9B4CCgAOt3zsU11a", "USER"));
     }
 }

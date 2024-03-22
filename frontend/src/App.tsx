@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-import StudentList from './components/StudentList';
+import Login from './components/Login';
 
 const queryClient = new QueryClient();
 
@@ -19,7 +19,7 @@ const App = () => {
         </Toolbar>
       </AppBar>
       <QueryClientProvider client={queryClient}>
-        <StudentList />
+        <Login />
       </QueryClientProvider>
     </Container>
   );
